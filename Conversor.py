@@ -121,7 +121,7 @@ while op != "3":
             digito = int(numBin[i])
             resultado = digito * potencia
             decimal += resultado
-            print(f"Posición {i}: bit={digito} → {digito}×2^{longitudNumero - (i + 1)} = {resultado} → Acumulado: {decimal}")
+            print(f"Posición {i+1}: bit={digito} → {digito}×2^{longitudNumero - (i + 1)} = {resultado} → Acumulado: {decimal}")
         print("-" * 50)
         print(f"El número decimal final es: {decimal}\n\n\n")
 
