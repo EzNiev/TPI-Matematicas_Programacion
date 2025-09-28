@@ -76,7 +76,7 @@ while op != "3":
                 n = n // 2
                 # El while de arriba lo va aseguir dividiendo hasta que el número deje de ser mayor que cero.
             print( "-" * 50)
-        print(f"El número binario es: {binario}")
+        print(f"El número binario es: {binario}\n\n\n")
 
     # Conversión BINARIO a DECIMAL
     elif op == "2":
@@ -111,9 +111,10 @@ while op != "3":
         # ========================================
         decimal = 0
         longitudNumero = len(numBin)
-        print(f'\n--------------------------------------------'
-            f'\n----------------- CALCULO ------------------'
-            f'\n--------------------------------------------'
+        print(
+            f'\n================================'
+            f'\n===========  CALCULO ==========='
+            f'\n================================'
             )
         for i in range(longitudNumero):
             potencia = 2 ** (longitudNumero - (i + 1))
@@ -122,11 +123,11 @@ while op != "3":
             decimal += resultado
             print(f"Posición {i}: bit={digito} → {digito}×2^{longitudNumero - (i + 1)} = {resultado} → Acumulado: {decimal}")
         print("-" * 50)
-        print(f"El número decimal final es: {decimal}")
+        print(f"El número decimal final es: {decimal}\n\n\n")
 
     elif op == "3":
         print("Saliendo.")
 
     # Manejo de errores de tipeo
     else:
-        print("Opción no válida. Debe elegir 1-2-3. Se vuelve al menú principal")
+        print("Opción no válida. Debe elegir 1-2-3. Se vuelve al menú principal\n\n\n")
