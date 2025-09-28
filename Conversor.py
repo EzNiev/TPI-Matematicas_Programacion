@@ -1,4 +1,5 @@
 """
+CONSIGNA
 Conversión de Números: Desarrollen un programa que convierta números decimales a
 binarios y, de forma OPCIONAL, también de binario a decimal.
 Extensión: Validar la entrada y mostrar mensajes de error ante datos incorrectos.
@@ -30,15 +31,20 @@ Manejo de errores
 # Inicializo op en un numero que fuerce la entrada al bucle while principal:
 op = "0"
 
-while op != "1" or op != "2" or op != "3":
+# Linea vieja corregida por gemini y copilot
+# while op != "1" or op != "2" or op != "3":
+while op != "3":
     # Printeamos un menú básicos, despues le agregaremos más instrucciones...
+    print("============================")
     print("=== Conversor de Números ===")
+    print("============================")
     print("1. Decimal a Binario")
     print("2. Binario a Decimal")
     print("3. Salir")
+    print("============================")
 
     # Procesamos la entrada como un string para hacer más facil las validaciones
-    op = input("Seleccione una opción (1 o 2): ").strip()
+    op = input("Seleccione una opción (1-3): ").strip()
 
     # Conversión DECIMAL a BINARIO
     if op == "1":
@@ -120,7 +126,6 @@ while op != "1" or op != "2" or op != "3":
 
     elif op == "3":
         print("Saliendo.")
-        break
 
     # Manejo de errores de tipeo
     else:
