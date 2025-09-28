@@ -46,27 +46,20 @@ while op != "1" or op != "2":
         if not num.isdigit():
             print("Error: Debe ingresar un número binario.")
         else:
-            # El string lo pasamos a INT para hacer operaciones aritmétiucas sin problemas
-            n = int(num)
-            # Analizamos el caso 0
-            if n == 0:
-                decimal = "0"
-            else:
-                # Inicializamos la variable en vacio
-                decimal = ""
-                num_inv=''
-                suma=0
-                for x in range(len(num)-1, -1,-1):
-                    num_inv+=num[x]
-                for i in range (len(num)):
-                    resultado=num_inv[i]
-                    resultado=int(resultado)
-                    resultado=resultado*(2**(i))
-                    suma+=resultado
-                print(suma)    
-
-
-            print(f"El número decimal es es: {decimal}")
+                # Inicializamos las variable en vacio
+            decimal = 0
+            num_inv=''
+            suma=0
+            #Invertimos el número, para luego poder convertirlo a decimal
+            for x in range(len(num)-1, -1,-1):
+                num_inv+=num[x]
+            #Realizamos la converisón a decimal
+            for i in range (len(num)):
+                resultado=num_inv[i]
+                resultado=int(resultado) #Transformamos la variable a INT, para poder operar aritemticament sin problemas
+                resultado=resultado*(2**(i))
+                decimal+=resultado  
+        print(f"El número decimal es es: {decimal}")
 
     
 
