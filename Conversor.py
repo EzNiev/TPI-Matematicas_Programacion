@@ -35,7 +35,7 @@ while op != "1" or op != "2":
     print("2. Binario a Decimal")
 
     # Procesamos la entrada como un string para hacer más facil las validaciones
-    op = input("Seleccione una opción (1 o 2): ")
+    op = input("Seleccione una opción (1 o 2): ").strip()
 
     # Conversión DECIMAL a BINARIO
     if op == "1":
