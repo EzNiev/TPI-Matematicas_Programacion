@@ -26,9 +26,9 @@ Conversión binario → decimal
 Manejo de errores
     Si la entrada es inválida, mostrar mensaje y terminar o permitir reintento.
 """
+
 # Inicializo op en un numero que fuerce la entrada al bucle while principal:
 op = "0"
-
 
 while op != "1" or op != "2" or op != "3":
     # Printeamos un menú básicos, despues le agregaremos más instrucciones...
@@ -71,59 +71,45 @@ while op != "1" or op != "2" or op != "3":
                 # El while de arriba lo va aseguir dividiendo hasta que el número deje de ser mayor que cero.
             print( "-" * 50)
         print(f"El número binario es: {binario}")
-        """
-            25 ÷ 2 = 12, resto 1   → bit más a la derecha
-            12 ÷ 2 = 6, resto 0
-            6 ÷ 2 = 3, resto 0
-            3 ÷ 2 = 1, resto 1
-            1 ÷ 2 = 0, resto 1   → bit más a la izquierda
-
-        """
-
-
-
-
 
     # Conversión BINARIO a DECIMAL
     elif op == "2":
-        # Pedimos una cadena de 0s y 1s. Validamos manualmente cada carácter para evitar estructuras complejas.
-        numBin= input("\nIngresá un número binario (solo 0 y 1): ").strip()
+        num = input("Ingrese un número binario: ").strip()
+        bin_Valido = False
+        while not bin_Valido:
+            # Validar que los caracteres sean numeros
+            if num != "":
+                for car in num:
+                    if car != "1" and car != "0":
+                        print("Error: Debe ingresar un número binario.")
+                    else:
+                        bin_Valido = True
 
-        # Validación del binario: no vacío y cada carácter debe ser '0' o '1'.
-        # Usamos un bucle while para repetir hasta que sea correcto.
-        es_valido = False  # asumimos inválido hasta verificar
-        while not es_valido:
-            es_binario = True #Asumimos que la cadena es binaria, si se encuentra un error la cambiamos a false
+            elif num == "":
+                print("ERROR. No ingresó nada.")
 
-            if numBin == "":
-                print("Entrada inválida. No puede estar vacía.")
-                es_binario = False
             else:
-                # Recorremos cada carácter y revisamos que sea 0 u 1.
-                i = 0
-                while i < len(numBin) and es_binario:
-                    caracter = numBin[i]
-                    if caracter != "0" and caracter != "1": #si se encuentra un caracter que no 0 ni 1 corta el bucle
-                        es_binario = False
-                        break
+                print("Numero binario valido.")
+                bin_Valido = True
 
-                    i = i + 1
+            if not bin_Valido:
+                num = input("Ingrese un número binario: ").strip()
+                break
 
-            if es_binario:
-                es_valido = True
-            else:
-                print("Entrada inválida. Solo se permiten dígitos 0 y 1.")
-                numBin= input("\nReingresá un número binario (solo 0 y 1): ").strip()
-
-        # Convertimos el binario validado a decimal usando acumulación por base 2.
-        # Recorremos de izquierda a derecha: acumulador = acumulador * 2 + dígito
+        # Inicializamos las variable en vacio
         decimal = 0
-        i = 0
-        while i < len(numBin):
-            dig = int(numBin[i])     # seguro: solo 0 o 1
-            decimal = decimal * 2 + dig
-            i += 1
-        print(f"El número binario {numBin} equivale a {decimal} en decimal.")
+        num_inv = ''
+        suma = 0
+        #Invertimos el número, para luego poder convertirlo a decimal
+        for x in range(len(num)-1, -1,-1):
+            num_inv+=num[x]
+
+        for i in range (len(num)):
+            resultado=num_inv[i]
+            resultado=int(resultado) #Transformamos la variable a INT, para poder operar aritemticament sin problemas
+            resultado=resultado*(2**(i))
+            decimal+=resultado
+        print(f"El número decimal es es: {decimal}")
 
     elif op == "3":
         print("Saliendo.")
@@ -131,4 +117,4 @@ while op != "1" or op != "2" or op != "3":
 
     # Manejo de errores de tipeo
     else:
-        print("Opción no válida. Debe elegir 1 o 2. Se vuelve al menú pirincipal")
+        print("Opción no válida. Debe elegir 1-2-3. Se vuelve al menú principal")
