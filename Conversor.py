@@ -42,14 +42,14 @@ while op != "1" or op != "2" or op != "3":
 
     # Conversión DECIMAL a BINARIO
     if op == "1":
-        num = input("Ingresá el número decimal (>= 0): ").strip()
+        numBin = input("Ingresá el número decimal (>= 0): ").strip()
         # Validar que sea un entero positivo
 
-        while (num == "") or (not num.isdigit()):
+        while (numBin == "") or (not numBin.isdigit()):
             print("Entrada inválida. Debe ser un entero no negativo sin signos ni puntos.")
-            num = input("Reingresá el número decimal (>= 0): ").strip()
+            numBin = input("Reingresá el número decimal (>= 0): ").strip()
 
-        n = int(num)
+        n = int(numBin)
             # Analizamos el caso 0
         if n == 0:
                 binario = "0"
@@ -74,42 +74,49 @@ while op != "1" or op != "2" or op != "3":
 
     # Conversión BINARIO a DECIMAL
     elif op == "2":
-        num = input("Ingrese un número binario: ").strip()
+        # ========================================
+        # VALIDACIÓN DE ENTRADA BINARIA CORREGIDA
+        # ========================================
         bin_Valido = False
         while not bin_Valido:
-            # Validar que los caracteres sean numeros
-            if num != "":
-                for car in num:
-                    if car != "1" and car != "0":
-                        print("Error: Debe ingresar un número binario.")
-                    else:
-                        bin_Valido = True
+            numBin = input("Ingrese un número binario: ").strip()
 
-            elif num == "":
-                print("ERROR. No ingresó nada.")
+            # 1 Validar cadena vacía
+            if numBin == "":
+                print("ERROR: No ingresó nada.")
+                continue  # vuelve a pedir
 
-            else:
-                print("Numero binario valido.")
-                bin_Valido = True
+            # 2 Validar que solo contenga '0' y '1'
+            es_binario = True
+            for car in numBin:
+                if car not in ("0", "1"):
+                    es_binario = False
+                    break
 
-            if not bin_Valido:
-                num = input("Ingrese un número binario: ").strip()
-                break
+            if not es_binario:
+                print("Error: Debe ingresar un número binario (solo 0 y 1).")
+                continue  # vuelve a pedir
 
-        # Inicializamos las variable en vacio
+            # Si pasó ambas validaciones
+            bin_Valido = True
+
+        # ========================================
+        # CONVERSIÓN A DECIMAL
+        # ========================================
         decimal = 0
-        num_inv = ''
-        suma = 0
-        #Invertimos el número, para luego poder convertirlo a decimal
-        for x in range(len(num)-1, -1,-1):
-            num_inv+=num[x]
-
-        for i in range (len(num)):
-            resultado=num_inv[i]
-            resultado=int(resultado) #Transformamos la variable a INT, para poder operar aritemticament sin problemas
-            resultado=resultado*(2**(i))
-            decimal+=resultado
-        print(f"El número decimal es es: {decimal}")
+        longitudNumero = len(numBin)
+        print(f'\n--------------------------------------------'
+            f'\n----------------- CALCULO ------------------'
+            f'\n--------------------------------------------'
+            )
+        for i in range(longitudNumero):
+            potencia = 2 ** (longitudNumero - (i + 1))
+            digito = int(numBin[i])
+            resultado = digito * potencia
+            decimal += resultado
+            print(f"Posición {i}: bit={digito} → {digito}×2^{longitudNumero - (i + 1)} = {resultado} → Acumulado: {decimal}")
+        print("-" * 50)
+        print(f"El número decimal final es: {decimal}")
 
     elif op == "3":
         print("Saliendo.")
