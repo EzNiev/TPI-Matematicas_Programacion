@@ -56,6 +56,7 @@ while op != "1" or op != "2" or op != "3":
         else:
         # Inicializamos la variable en vacio
             binario = ""
+            print("-" * 50)
             while n > 0:
                 # Vamos rescatando digito por dígito
                 resto = n % 2 # calculamos el bit menos significativo
@@ -63,12 +64,26 @@ while op != "1" or op != "2" or op != "3":
                 # vamos guardando ese bit en la cadena binario, el primer resto sería el primer digito del numero en binario
                 binario = str(resto) + binario
 
+                print(f'{n} / 2 = {n/2}, resto {resto}.')
                 # Al numero n que es int lo vamos dividiendo de a 2, para seguir
                 # con las sucesivas divisiones por 2 como nos enseñaron en matematicas
                 n = n // 2
                 # El while de arriba lo va aseguir dividiendo hasta que el número deje de ser mayor que cero.
 
+            print( "-" * 50)
         print(f"El número binario es: {binario}")
+        """
+            25 ÷ 2 = 12, resto 1   → bit más a la derecha
+            12 ÷ 2 = 6, resto 0
+            6 ÷ 2 = 3, resto 0
+            3 ÷ 2 = 1, resto 1
+            1 ÷ 2 = 0, resto 1   → bit más a la izquierda
+
+        """
+
+
+
+
 
     # Conversión BINARIO a DECIMAL
     elif op == "2":
