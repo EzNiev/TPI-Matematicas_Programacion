@@ -55,6 +55,10 @@ while op != "3":
             print("Entrada inválida. Debe ser un entero no negativo sin signos ni puntos.")
             numBin = input("Reingresá el número decimal (>= 0): ").strip()
 
+
+
+
+
         n = int(numBin)
             # Analizamos el caso 0
         if n == 0:
@@ -77,6 +81,10 @@ while op != "3":
                 # El while de arriba lo va aseguir dividiendo hasta que el número deje de ser mayor que cero.
             print( "-" * 50)
         print(f"El número binario es: {binario}\n\n\n")
+
+
+
+
 
     # Conversión BINARIO a DECIMAL
     elif op == "2":
